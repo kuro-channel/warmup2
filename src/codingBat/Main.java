@@ -9,7 +9,8 @@ public class Main {
 		String frontTimes = new Main().frontTimes("Chocolate", 2);
 		// countXX
 		int countXX  = new Main().countXX("abcxx");
-
+		// stringBits
+		String stringBits = new Main().stringBits("Hello");
 	}
 	//	Given a string and a non-negative int n, return a larger string that
 	//	is n copies of the original string.
@@ -83,5 +84,29 @@ public class Main {
 			return true;
 		}
 		return false;
+	}
+
+
+	// Given a string, return a new string made of every other char starting with the first,
+	// so "Hello" yields "Hlo".
+	//stringBits("Hello") → "Hlo"
+	//stringBits("Hi") → "H"
+	//stringBits("Heeololeo") → "Hello"
+	public String stringBits(String str) {
+		String bits = "";
+		// 2個飛ばして文字を結合していく
+		for(int i=0; i<str.length();i+=2){
+			bits =  bits + str.substring(i, i+1);
+		}
+		return bits;
+	}
+
+	//	Given a non-empty string like "Code" return a string like "CCoCodCode".
+	//
+	//			stringSplosion("Code") → "CCoCodCode"
+	//			stringSplosion("abc") → "aababc"
+	//			stringSplosion("ab") → "aab"
+	public String stringSplosion(String str) {
+
 	}
 }
