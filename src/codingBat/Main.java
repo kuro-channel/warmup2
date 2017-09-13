@@ -11,6 +11,10 @@ public class Main {
 		int countXX  = new Main().countXX("abcxx");
 		// stringBits
 		String stringBits = new Main().stringBits("Hello");
+		// stringBits
+		String stringSplosion = new Main().stringBits("Code");
+		// last2
+		int last2 = new Main().last2("hixxhi");
 	}
 	//	Given a string and a non-negative int n, return a larger string that
 	//	is n copies of the original string.
@@ -107,6 +111,38 @@ public class Main {
 	//			stringSplosion("abc") → "aababc"
 	//			stringSplosion("ab") → "aab"
 	public String stringSplosion(String str) {
+		String result = "";
+		// 先頭から文字列を足していく
+		for(int i = 0; i < str.length(); i++){
+			result = result + str.substring(0, i+1);
+		}
+		return result;
+	}
 
+	//Given a string, return the count of the number of times
+	// that a substring length 2 appears in the string and also
+	// as the last 2 chars of the string, so "hixxxhi" yields 1
+	// (we won't count the end substring).
+	//
+	//last2("hixxhi") → 1
+	//last2("xaxxaxaxx") → 1
+	//last2("axxxaaxx") → 2
+	public int last2(String str) {
+		// 最後尾2文字を変数に格納
+		String end = "";
+		if(str.length()>=2){
+			end = str.substring(str.length()-2);
+		}
+		// 比較用変数
+		String sub = "";
+		// カウント用変数
+		int count = 0;
+		for(int i =0; i< str.length()-2; i++){
+			sub = str.substring(i,i+2);
+			if(sub.equals(end)){
+				count++;
+			}
+		}
+		return count;
 	}
 }
