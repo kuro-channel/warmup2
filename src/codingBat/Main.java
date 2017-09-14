@@ -15,6 +15,10 @@ public class Main {
 		String stringSplosion = new Main().stringBits("Code");
 		// last2
 		int last2 = new Main().last2("hixxhi");
+		// arrayCount9
+		int[] nums = {1, 2, 9};
+		int arrayCount9 = new Main().arrayCount9(nums);
+
 	}
 	//	Given a string and a non-negative int n, return a larger string that
 	//	is n copies of the original string.
@@ -144,5 +148,51 @@ public class Main {
 			}
 		}
 		return count;
+	}
+
+	//Given an array of ints, return the number of 9's in the array.
+	//
+	//arrayCount9([1, 2, 9]) → 1
+	//arrayCount9([1, 9, 9]) → 2
+	//arrayCount9([1, 9, 9, 3, 9]) → 3
+	public int arrayCount9(int[] nums) {
+		int count = 0;
+		// 数値配列のうち、9があったらカウントアップする
+		for(int num: nums){
+			if(num == 9){
+				count++;
+			}
+		}
+		return count;
+	}
+	//	Given an array of ints, return true if one of the first 4 elements
+	//	in the array is a 9. The array length may be less than 4.
+	//
+	//			arrayFront9([1, 2, 9, 3, 4]) → true
+	//			arrayFront9([1, 2, 3, 4, 9]) → false
+	//			arrayFront9([1, 2, 3, 4, 5]) → false
+	public boolean arrayFront9(int[] nums) {
+		// 数値配列に9が要素の４番目までに属すること
+		for(int i=0; i <nums.length;i++){
+			if(nums[i] == 9 && i <3){
+				return true;
+			}
+		}
+		return false;
+	}
+//	Given an array of ints, return true if the sequence of numbers 1, 2, 3
+//	appears in the array somewhere.
+//
+//			array123([1, 1, 2, 3, 1]) → true
+//			array123([1, 1, 2, 4, 1]) → false
+//			array123([1, 1, 2, 1, 2, 3]) → true
+	public boolean array123(int[] nums) {
+		// 数値配列の要素で、要素が1,2,3と並ぶ場合を正とする
+		for(int i =0 ; i< nums.length-2; i++){
+			if(nums[i]==1 && nums[i+1]==2 && nums[i+2] ==3){
+				return true;
+			}
+		}
+		return false;
 	}
 }
