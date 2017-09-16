@@ -180,12 +180,12 @@ public class Main {
 		}
 		return false;
 	}
-//	Given an array of ints, return true if the sequence of numbers 1, 2, 3
-//	appears in the array somewhere.
-//
-//			array123([1, 1, 2, 3, 1]) → true
-//			array123([1, 1, 2, 4, 1]) → false
-//			array123([1, 1, 2, 1, 2, 3]) → true
+	//	Given an array of ints, return true if the sequence of numbers 1, 2, 3
+	//	appears in the array somewhere.
+	//
+	//			array123([1, 1, 2, 3, 1]) → true
+	//			array123([1, 1, 2, 4, 1]) → false
+	//			array123([1, 1, 2, 1, 2, 3]) → true
 	public boolean array123(int[] nums) {
 		// 数値配列の要素で、要素が1,2,3と並ぶ場合を正とする
 		for(int i =0 ; i< nums.length-2; i++){
@@ -195,4 +195,27 @@ public class Main {
 		}
 		return false;
 	}
+	//	Given 2 strings, a and b, return the number of the positions where they contain
+	//			the same length 2 substring. So "xxcaazz" and "xxbaaz" yields 3,
+	//			since the "xx", "aa", and "az" substrings appear in the same place in both strings.
+	//
+	//			stringMatch("xxcaazz", "xxbaaz") → 3
+	//			stringMatch("abc", "abc") → 2
+	//			stringMatch("abc", "axc") → 0
+	public int stringMatch(String a, String b) {
+		// aとbで長さを比較
+		int length = Math.min(a.length(), b.length());
+		// 文字列一致カウント
+		int count =0;
+
+		for(int i=0; i< length-1;i++){
+			String subA = a.substring(i, i+2);
+			String subB = b.substring(i, i+2);
+			if(subA.equals(subB)){
+				count++;
+			}
+		}
+		return count;
+	}
+
 }
