@@ -18,7 +18,10 @@ public class Main {
 		// arrayCount9
 		int[] nums = {1, 2, 9};
 		int arrayCount9 = new Main().arrayCount9(nums);
-
+		// stringX
+		String stringX = new Main().stringX("xxHxix");
+		//altPairs
+		String altPairs = new Main().altPairs("Chocolate");
 	}
 	//	Given a string and a non-negative int n, return a larger string that
 	//	is n copies of the original string.
@@ -218,4 +221,46 @@ public class Main {
 		return count;
 	}
 
+	//Given a string, return a version where all the "x" have been removed.
+	//		Except an "x" at the very start or end should not be removed.
+	//
+	//stringX("xxHxix") → "xHix"
+	//stringX("abxxxcd") → "abcd"
+	//stringX("xabxxxcdx") → "xabcdx"
+	public String stringX(String str) {
+		// strが2文字以下の場合はstrをそのまま返す
+		if(str.length()<=2){return str;}
+		String start = "";
+		String end = "";
+		// 最初と最後の文字が"x"以外の場合、"x"を除く
+		if(str.substring(0,1).equals("x")){
+			start = "x";
+		}
+		if(str.substring(str.length()-1).equals("x")){
+			end = "x";
+		}
+
+		String stringX = str.replaceAll("x","");
+		return start + stringX + end;
+	}
+
+	//Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 ...
+	//	so "kittens" yields "kien".
+	//
+	//altPairs("kitten") → "kien"
+	//altPairs("Chocolate") → "Chole"
+	//altPairs("CodingHorror") → "Congrr"
+	public String altPairs(String str) {
+		String sub = "";
+		// strが1文字以下の場合はstrをそのまま返す
+		if(str.length()<=1){return str;};
+		for(int i =0; i< str.length(); i+=4){
+			if((i+1)==str.length()){
+				sub = sub + str.substring(i,i+1);
+			}else{
+				sub = sub + str.substring(i,i+2);
+			}
+		}
+		return sub;
+	}
 }
